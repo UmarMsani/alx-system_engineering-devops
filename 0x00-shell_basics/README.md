@@ -10,4 +10,4 @@ mv /tmp/betty /tmp/my_first_directory/ Move the file betty from /tmp/ to /tmp/my
 rm /tmp/my_first_directory/betty to delect The file betty is in /tmp/my_first_directory
 rm -r /tmp/mt_first_directory To Delete the directory my_first_directory that is in the /tmp directory
 cd - To changes the working directory to the previous one
-ls -la ./ ../ /boot/ To lists all files (even ones with names beginning with a period character, which are normally hidden) in the current directory and the parent of the working directory and the /boot directory (in this order), in long format 
+ls -la . ../ /boot/ To lists all files (even ones with names beginning with a period character, which are normally hidden) in the current directory and the parent of the working directory and the /boot directory (in this order), in long format 
