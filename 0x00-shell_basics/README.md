@@ -11,3 +11,4 @@ rm /tmp/my_first_directory/betty to delect The file betty is in tmp my_first_dir
 rm -r /tmp/mt_first_directory To Delete the directory my_first_directory that is in the tmp directory
 cd - to changes the working directory to the previous one
 ls -la . .. /boot to lists all files even ones with names beginning with a period character which are hidden in the current directory and the parent of the working directory and the boot directory in log
+file /tmp/ianafile prints the type of the file named iamafile. The file iamafile will be in the /tmp directory when we will run your script
