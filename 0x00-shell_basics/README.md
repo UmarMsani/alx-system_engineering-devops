@@ -14,3 +14,4 @@ ls -la . .. /boot to lists all files even ones with names beginning with a perio
 file /tmp/ianafile prints the type of the file named iamafile. The file iamafile will be in the /tmp directory when we will run your script
 ln -s /bin/ls ./ls to create symbolic link
 ln -s /bin/ls _ls_ to create symbolic link in the current directory
+cp -u --recursive --no-clobber --update *.html ..
