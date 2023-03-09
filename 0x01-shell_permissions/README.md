@@ -13,4 +13,4 @@ chmod -R ugo+x . this will adds execute permission to all subdirectories of the 
 mkdir -m 751 my_dir this code creates a directory called my_dir with permissions 751 in the working directory
 chgrp school hello this will changes the group owner to school for the file hello
 chown -R vincent:staff ./* changes the owner to vincent and the group owner to staff for all the files and directories in the working directory.
-sudo chown vincent:staff _hello this will changes the owner and the group owner of _hello to vincent and staff respectively
+chown vincent:staff _hello this will changes the owner and the group owner of _hello to vincent and staff respectively
