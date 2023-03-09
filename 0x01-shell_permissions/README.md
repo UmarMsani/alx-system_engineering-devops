@@ -14,5 +14,5 @@ mkdir -m 751 my_dir this code creates a directory called my_dir with permissions
 chgrp school hello this will changes the group owner to school for the file hello
 chown -R vincent:staff ./* changes the owner to vincent and the group owner to staff for all the files and directories in the working directory.
 chown -R vincent:staff _hello this will changes the owner and the group owner of _hello to vincent and staff respectively
-[ "$(stat -c %U hello)" = "guillaume" ] then chown betty hello changes the owner of the file hello to betty only if it is owned by the user guillaume.
+chown --from=guillaume betty hello changes the owner of the file hello to betty only if it is owned by the user guillaume.
 telnet towel.blinkenlights.nl script that will play the StarWars IV episode in the terminal.
