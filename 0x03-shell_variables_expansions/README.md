@@ -5,3 +5,4 @@ Shell, init files, variables and expansions.
 3. If the path be beautiful, let us not ask where it leads: a script that counts the number of directories in the PATH.
 4. Global variables: a script that lists environment variables.
 5. Local variables: a script that lists all local variables and environment variables, and functions.
+6. Local variable: script that creates a new local variable.
