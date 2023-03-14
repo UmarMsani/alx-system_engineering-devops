@@ -8,3 +8,4 @@ Shell, init files, variables and expansions.
 6. Local variable: script that creates a new local variable.
 7. Global variable: script that creates a new global variable.
 8. Every addition to true knowledge is an addition to human power: a script that prints the result of the addition of 128 with the value stored in the environment variable TRUEKNOWLEDGE, followed by a new line.
+9. Divide and rule: Write a script that prints the result of POWER divided by DIVIDE, followed by a new line. POWER and DIVIDE are environment variables.
