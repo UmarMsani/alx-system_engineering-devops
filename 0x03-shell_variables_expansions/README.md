@@ -9,3 +9,4 @@ Shell, init files, variables and expansions.
 7. Global variable: script that creates a new global variable.
 8. Every addition to true knowledge is an addition to human power: a script that prints the result of the addition of 128 with the value stored in the environment variable TRUEKNOWLEDGE, followed by a new line.
 9. Divide and rule: Write a script that prints the result of POWER divided by DIVIDE, followed by a new line. POWER and DIVIDE are environment variables.
+10. Love is anterior to life, posterior to death, initial of creation, and the exponent of breath: a script that displays the result of BREATH to the power LOVE, BREATH and LOVE are environment variables, The script should display the result, followed by a new line.
