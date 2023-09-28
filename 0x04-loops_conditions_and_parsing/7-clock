@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script displays the time in 12-hour format.
+
+hours=0
+
+while [ $hours -le 12 ]; do
+    minutes=1
+    while [ $minutes -le 59 ]; do
+        echo "Hour: $(printf "%02d" $hours) Minute: $(printf "%02d" $minutes)"
+        ((minutes++))
+    done
+    ((hours++))
+done | head -n 70
