@@ -6,7 +6,7 @@ hours=0
 while [ $hours -le 12 ]; do
     minutes=1
     while [ $minutes -le 59 ]; do
-        echo "Hour: $(printf "%02d" $hours) Minute: $(printf "%02d" $minutes)"
+        printf "%02d:%02d\n" $hours $minutes
         ((minutes++))
     done
     ((hours++))
