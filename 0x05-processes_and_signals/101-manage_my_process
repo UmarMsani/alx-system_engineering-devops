@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# This init script manages manage_my_process.
+
+MANAGE_SCRIPT="./manage_my_process"
+PID_FILE="/var/run/my_process.pid"
+
+function start_process {
+    if [ -f "$PID_FILE" ]; then
+        echo "Error: Process is already running. Please stop it first."
+    else
+        $MANAGE_SCRIPT &
+        echo $! > "$PID_FILE"
+        echo "manage_my_process started"
+    fi
+}
+
+function stop_process {
+    if [ -f "$PID_FILE" ]; then
+        kill $(cat "$PID_FILE")
+        rm "$PID_FILE"
+        echo "manage_my_process stopped"
+    else
+        echo "Error: No running process found."
+    fi
+}
+
+function restart_process {
+    stop_process
+    start_process
+    echo "manage_my_process restarted"
+}
+
+case "$1" in
+    start)
+        start_process
+        ;;
+    stop)
+        stop_process
+        ;;
+    restart)
+        restart_process
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
