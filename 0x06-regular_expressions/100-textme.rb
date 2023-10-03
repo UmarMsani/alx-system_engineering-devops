@@ -1,12 +1,7 @@
 #!/usr/bin/env ruby
 
-# Read the log file content
-log_content = ARGF.read
-
-# Extract sender, receiver, and flags
-sender = log_content[/from:([^\]]+)/, 1]
-receiver = log_content[/to:([^\]]+)/, 1]
-flags = log_content[/flags:([^\]]+)/, 1]
-
-# Print the formatted output
-puts "#{sender},#{receiver},#{flags}"
+# Read the log file content Extract sender, receiver, and flags
+from = ARGV[0].scan(/from:(.*?)\]/)
+to = ARGV[0].scan(/to:(.*?)\]/)
+flags = ARGV[0].scan(/flags:(.*?)\]/)
+puts [from, to, flags].join(',')
