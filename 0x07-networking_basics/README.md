@@ -1,7 +1,17 @@
 # 0x07. Networking basics #0
 
 # Resources
-Read or watch:
-https://intranet.alxswe.com/rltoken/k2uCsynicuNbu1cAQhXqVQ
-https://intranet.alxswe.com/rltoken/XW3ZGm5Ya_a8XVDXcAKT_A
-
+[Link OSI model](https://intranet.alxswe.com/rltoken/k2uCsynicuNbu1cAQhXqVQ)
+Different types of network
+LAN network
+WAN network
+Internet
+MAC address
+What is an IP address
+Private and public address
+IPv4 and IPv6
+Localhost
+TCP and UDP
+TCP/UDP ports List
+What is ping /ICMP
+Positional parameters
