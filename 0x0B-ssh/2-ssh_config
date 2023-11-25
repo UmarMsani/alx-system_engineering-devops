@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # SSH client configuration
 Host web-01
-    HostName 54.236.46.209
+    HostName 54.144.198.163
     User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
