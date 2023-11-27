@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Check if Nginx is installed
+if ! command -v nginx &>/dev/null; then
+    echo "Nginx is not installed. Installing Nginx..."
+
+    # Install Nginx
+    apt-get update
+    apt-get install -y nginx
+
+    # Check if installation was successful
+    if [ $? -ne 0 ]; then
+        echo "Failed to install Nginx. Exiting."
+        exit 1
+    fi
+fi
+
+# Set up custom 404 error page in Nginx configuration
+ERROR_PAGE_CONFIG="error_page 404 /404.html;
+
+location = /404.html {
+    internal;
+    root /usr/share/nginx/html;
+    echo 'Ceci n'\''est pas une page';
+}"
+
+echo "$ERROR_PAGE_CONFIG" | tee /etc/nginx/sites-available/default >/dev/null
+
+# Reload Nginx configuration to apply changes
+nginx -s reload
