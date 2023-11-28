@@ -1,29 +1,35 @@
 #!/usr/bin/env bash
-# Check if Nginx is installed
-if ! command -v nginx &>/dev/null; then
-    echo "Nginx is not installed. Installing Nginx..."
+# Configures Nginx server so that /redirect_me redirects to another page
+# Configures /redirect_me as a "301 Moved Permanently".
+# Includes a custom 404 page containing "Ceci n'est pas une page".
+apt-get update
+apt-get install -y nginx
 
-    # Install Nginx
-    apt-get update
-    apt-get install -y nginx
+# create dorectory and file with content Hello World!
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Hello World!" > /etc/nginx/html/index.html
+touch /etc/nginx/html/404.html
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
 
-    # Check if installation was successful
-    if [ $? -ne 0 ]; then
-        echo "Failed to install Nginx. Exiting."
-        exit 1
-    fi
-fi
+# Make sure Nginx is listening on port 80
+printf %s "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /etc/nginx/html;
+     index       index.html index.htm;
 
-# Set up custom 404 error page in Nginx configuration
-ERROR_PAGE_CONFIG="error_page 404 /404.html;
+     location /redirect_me {
+        return 301 http://cuberule.com/;
+     }
 
-location = /404.html {
-    internal;
-    root /usr/share/nginx/html;
-    echo 'Ceci n'\''est pas une page';
-}"
+     error_page 404 /404.html;
+     location /404 {
+	root /etc/nginx/html;
+	internal;
+     }
+}
+" > /etc/nginx/sites-available/default
 
-echo "$ERROR_PAGE_CONFIG" | tee /etc/nginx/sites-available/default >/dev/null
-
-# Reload Nginx configuration to apply changes
-nginx -s reload
+# Restarts the Nginx service to apply the configuration changes.
+service nginx start
