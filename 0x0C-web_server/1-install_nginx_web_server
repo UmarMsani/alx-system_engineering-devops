@@ -11,3 +11,6 @@ nginx -s reload
 
 # Create a page with "Hello World!"
 echo "Hello World!" > /var/www/html/index.html
+
+# Restarts the Nginx service to apply the configuration changes.
+service nginx start
