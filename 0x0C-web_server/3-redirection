@@ -10,16 +10,33 @@ echo "Hello World!" > /etc/nginx/html/index.html
 
 # Make sure Nginx is listening on port 80
 printf %s "server {
-     listen      80 default_server;
+     listen      80;
      listen      [::]:80 default_server;
      root        /etc/nginx/html;
      index       index.html index.htm;
-
-     location /redirect_me {
-        return 301 http://cuberule.com/;
-     }
 }
 " > /etc/nginx/sites-available/default
 
+# To Configure new server block for redirection.
+echo "server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/html;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" | sudo tee /etc/nginx/sites-available/redirect
+
+# Enable new site configuration.
+sudo ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
+
+
+# test Nginx configurations and reload.
+sudo nginx -t
 # Restarts the Nginx service to apply the configuration changes.
-service nginx start
+sudo service nginx reload
