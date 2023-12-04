@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Script to configure Nginx with a custom HTTP response header
+
+# Update package list and install Nginx
+sudo apt update
+sudo apt install nginx -y
+
+# Define custom header configuration file
+header_config="/etc/nginx/conf.d/custom_response_header.conf"
+
+# Create custom header configuration
+sudo bash -c "cat > $header_config" << 'EOF'
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+
+    # Custom header configuration
+    add_header X-Served-By $hostname;
+
+    # Other Nginx configurations
+     # Set server root directory
+    root /var/www/html;
+
+    # Define index file
+    index index.html index.htm;
+
+    # Additional location directives
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+EOF
+
+# Restart Nginx to apply changes
+sudo systemctl restart nginx
