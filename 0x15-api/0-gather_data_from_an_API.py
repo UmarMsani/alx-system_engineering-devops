@@ -3,8 +3,8 @@
 This script retrieves information about an employee's
 TODO list progress using a REST API.
 """
-import sys
 import requests
+import sys
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
