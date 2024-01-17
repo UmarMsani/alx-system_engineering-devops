@@ -15,21 +15,18 @@ def number_of_subscribers(subreddit):
     if subreddit is None or not isinstance(subreddit, str):
         return 0
 
-    # Identifying the user agent
+    # Define the User-Agent and URL for the Reddit API request
     user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
-
-    # Identify the URL
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
 
-    # Make the request
+    # Make a GET request to the Reddit API
     response = get(url, headers=user_agent)
+    results = response.json()
 
-    # Convert the response into JSON format
-    json_response = response.json()
-
-    # Try to get the number of subscribers
     try:
-        return json_response.get('data').get('subscribers')
-    # If you couldn't get it, return 0
-    except exceptions.RequestException as e:
+        # Extract the number of subscribers from the JSON response
+        return results.get('data').get('subscribers')
+
+    except Exception:
+        # Handle any exceptions and return 0 if an error occurs
         return 0

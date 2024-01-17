@@ -17,27 +17,26 @@ def top_ten(subreddit):
         None
     """
 
-    # Check if the subreddit is None or not a string
+     # Check if the subreddit is None or not a string
     if subreddit is None or not isinstance(subreddit, str):
         print("None")
 
-    # Define User-Agent and parameters for the Reddit API request
-    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
-    params = {'limit': 10}
-    url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
+    # Define the URL and headers for the Reddit API request
+    url = 'https://reddit.com/r/{}/hot.json?limit=10'.format(subreddit)
+    headers = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
 
     # Make a GET request to the Reddit API
-    response = get(url, headers=user_agent, params=params)
-    fetch_data = response.json()
+    response = get(url, headers=headers)
+    results = response.json()
 
     try:
         # Extract information from the JSON response
-        raw1 = fetch_data.get('data').get('children')
+        data = results.get('data').get('children')
 
         # Print the titles of the first 10 hot posts
-        for i in raw1:
-            print(i.get('data').get('title'))
+        for datii in data:
+            print(datii.get('data').get('title'))
 
-    except exceptions.RequestException as e:
+    except Exception:
         # Handle any exceptions and print "None" if an error occurs
         print("None")
