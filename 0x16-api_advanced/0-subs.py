@@ -3,8 +3,7 @@
 Importing the 'get' function from the 'requests'
 module for making HTTP requests.
 """
-
-from requests import get, exceptions
+from requests import get
 
 
 def number_of_subscribers(subreddit):

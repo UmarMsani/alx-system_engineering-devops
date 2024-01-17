@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-
 """
 Importing requests module for making HTTP requests.
 """
-
 from requests import get
 
 
